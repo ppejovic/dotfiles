@@ -23,6 +23,7 @@ if is_osx; then
     brew upgrade
 
     brew install tree
+    brew install jq
 
 elif is_linux; then
     sudo -v
@@ -30,6 +31,7 @@ elif is_linux; then
     sudo apt update
 
     apps=(
+        jq
         zsh
         tree
         screenfetch
