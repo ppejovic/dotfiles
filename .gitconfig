@@ -1,3 +1,5 @@
+[core]
+  excludesfile = ~/.gitignore.global
 [user]
   name = Pero P.
   email = ppejovic@users.noreply.github.com
