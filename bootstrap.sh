@@ -4,7 +4,7 @@ cd "$(dirname "${BASH_SOURCE}")";
 
 git pull origin master --recurse-submodule --no-rebase;
 
-function doIt() {
+function do_it() {
 
     rsync --exclude ".git/" \
         --exclude ".DS_Store" \
@@ -24,12 +24,12 @@ function doIt() {
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
-    doIt;
+    do_it;
 else
     read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
     echo "";
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        doIt;
+        do_it;
     fi;
 fi;
-unset doIt;
+unset do_it;
