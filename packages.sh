@@ -33,11 +33,12 @@ elif is_linux; then
     apps=(
         jq
         zsh
+        unzip
         tree
         screenfetch
     )
 
-    sudo apt install "${apps[@]}"
+    sudo apt install "${apps[@]}" -y
 
     # Azure cli
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
