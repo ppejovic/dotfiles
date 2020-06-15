@@ -43,6 +43,14 @@ elif is_linux; then
     # Azure cli
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
     az extension add --name azure-devops
+
+    # AWS cli
+    pushd /tmp/
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip -o awscliv2.zip
+    sudo ./aws/install
+    popd
+
 fi
 
 # zsh
