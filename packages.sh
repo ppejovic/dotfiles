@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-function is_osx {
+function is_osx() {
     [[ $OSTYPE =~ ^darwin ]]
 }
 
-function is_linux {
+function is_linux() {
     [[ $OSTYPE =~ ^linux ]]
 }
 
@@ -55,13 +55,13 @@ fi
 
 # zsh
 update_shell() {
-  local shell_path;
-  shell_path="$(command -v zsh)"
+    local shell_path
+    shell_path="$(command -v zsh)"
 
-  if ! grep "$shell_path" /etc/shells > /dev/null 2>&1 ; then
-    sudo sh -c "echo $shell_path >> /etc/shells"
-  fi
-  chsh -s "$shell_path"
+    if ! grep "$shell_path" /etc/shells >/dev/null 2>&1; then
+        sudo sh -c "echo $shell_path >> /etc/shells"
+    fi
+    chsh -s "$shell_path"
 }
 
 if [[ $SHELL != */zsh ]]; then

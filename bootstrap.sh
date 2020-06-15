@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "${BASH_SOURCE}")";
+cd "$(dirname "${BASH_SOURCE}")"
 
-git pull origin master --recurse-submodule --no-rebase;
+git pull origin master --recurse-submodule --no-rebase
 
 function do_it() {
 
@@ -15,7 +15,7 @@ function do_it() {
         --exclude "packages.sh" \
         --exclude "README.md" \
         --exclude "LICENSE" \
-        -avh --no-perms . ~;
+        -avh --no-perms . ~
 
     if [[ $OSTYPE =~ ^darwin ]]; then
         git config --global credential.helper osxkeychain
@@ -25,12 +25,12 @@ function do_it() {
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
-    do_it;
+    do_it
 else
-    read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-    echo "";
+    read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
+    echo ""
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        do_it;
-    fi;
-fi;
-unset do_it;
+        do_it
+    fi
+fi
+unset do_it
