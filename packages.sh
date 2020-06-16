@@ -24,6 +24,7 @@ if is_osx; then
 
     brew install tree
     brew install jq
+    brew install tmux
 
 elif is_linux; then
     sudo -v
