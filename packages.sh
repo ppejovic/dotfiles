@@ -32,7 +32,8 @@ elif is_linux; then
     sudo apt update
 
     apps=(
-        jq
+        software-properties-common
+	jq
         zsh
         unzip
         tree
@@ -41,6 +42,10 @@ elif is_linux; then
     )
 
     sudo apt install "${apps[@]}" -y
+
+    # Ansible
+    sudo apt-add-repository --yes --update ppa:ansible/ansible
+    sudo apt install ansible
 
     # Azure cli
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -52,6 +57,9 @@ elif is_linux; then
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip -o awscliv2.zip
     sudo ./aws/install --update
+
+    # AWS Global Tool for dotnet
+    dotnet tool update -g Amazon.Lambda.Tools
 
     # Terraform
     TERR_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
