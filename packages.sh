@@ -33,12 +33,14 @@ elif is_linux; then
 
     apps=(
         software-properties-common
-	jq
+	    jq
         zsh
+        zip
         unzip
         tree
         screenfetch
         wget
+        python3-pip
     )
 
     sudo apt install "${apps[@]}" -y
