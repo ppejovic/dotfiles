@@ -35,15 +35,16 @@ elif is_linux; then
 
     # apt packages
     apps=(
-        software-properties-common
 	    jq
-        zsh
-        zip
-        unzip
-        tree
-        screenfetch
-        wget
+        pass
         python3-pip
+        screenfetch
+        software-properties-common
+        tree
+        unzip
+        wget
+        zip
+        zsh
     )
 
     sudo apt install "${apps[@]}" -y
