@@ -8,29 +8,38 @@ function is_linux() {
     [[ $OSTYPE =~ ^linux ]]
 }
 
-if is_osx; then
-    sudo -v
+sudo -v
 
-    # Install Homebrew if not found
-    if [[ -z $(command -v brew) ]]; then
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+# Install Homebrew if not found
+if [[ -z $(command -v brew) ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+    if is_linux; then
+        test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+        test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+        echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.zprofile
     fi
+fi
 
-    # Make sure we’re using the latest Homebrew
-    brew update
+# Make sure we’re using the latest Homebrew
+brew update
 
-    # Upgrade any already-installed formulae
-    brew upgrade
+# Upgrade any already-installed formulae
+brew upgrade
+
+if is_osx; then
 
     brew install tree
     brew install jq
     brew install tmux
 
 elif is_linux; then
-    sudo -v
-
     sudo apt update
 
+    # Homebrew formulae
+    brew install aws-vault
+
+    # apt packages
     apps=(
         software-properties-common
 	    jq
