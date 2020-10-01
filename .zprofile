@@ -11,6 +11,8 @@
 
 if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
+elif [[ -n "${WSL_DISTRO_NAME}" ]]; then
+  export BROWSER='wslview'
 fi
 
 #
