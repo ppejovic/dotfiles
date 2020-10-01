@@ -13,12 +13,6 @@ sudo -v
 # Install Homebrew if not found
 if [[ -z $(command -v brew) ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-    if is_linux; then
-        test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-        test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-        echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.zprofile
-    fi
 fi
 
 # Make sure we’re using the latest Homebrew
