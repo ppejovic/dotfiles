@@ -20,5 +20,8 @@ if type aws_completer >/dev/null 2>&1; then
   complete -C "$(which aws_completer)" aws
 fi
 
-#terraform cli completions
+# terraform cli completions
 complete -o nospace -C /usr/local/bin/terraform terraform
+
+# let me use things like HEAD^ in git commands
+unsetopt nomatch
