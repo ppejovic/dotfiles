@@ -27,6 +27,13 @@ if is_osx; then
     brew install jq
     brew install tmux
 
+    pushd /tmp
+
+    # AWS cli
+    curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+    sudo installer -pkg ./AWSCLIV2.pkg -target /
+
+    popd
 elif is_linux; then
     sudo apt update
 
