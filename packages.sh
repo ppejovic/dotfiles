@@ -23,9 +23,14 @@ brew upgrade
 
 if is_osx; then
 
-    brew install tree
-    brew install jq
-    brew install tmux
+    brew install tree \
+                 jq   \
+                 tmux \
+                 nmap \
+                 telnet
+
+    # Homebrew formulae
+    brew cask install aws-vault
 
     pushd /tmp
 
@@ -34,6 +39,7 @@ if is_osx; then
     sudo installer -pkg ./AWSCLIV2.pkg -target /
 
     popd
+
 elif is_linux; then
     sudo apt update
 
