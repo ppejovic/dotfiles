@@ -10,18 +10,18 @@ function is_linux() {
 
 sudo -v
 
-# Install Homebrew if not found
-if [[ -z $(command -v brew) ]]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-fi
-
-# Make sure we’re using the latest Homebrew
-brew update
-
-# Upgrade any already-installed formulae
-brew upgrade
-
 if is_osx; then
+
+    # Install Homebrew if not found
+    if [[ -z $(command -v brew) ]]; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    fi
+    
+    # Make sure we’re using the latest Homebrew
+    brew update
+    
+    # Upgrade any already-installed formulae
+    brew upgrade
 
     brew install tree \
                  jq   \
@@ -41,31 +41,33 @@ if is_osx; then
     popd
 
 elif is_linux; then
-    sudo apt update
 
-    # Homebrew formulae
-    brew install aws-vault
+    ## Repositories
+    sudo apt-add-repository --yes --update ppa:ansible/ansible
 
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+    sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+    
     # apt packages
     apps=(
-	    jq
+        ansible
+        jq
         pass
         python3-pip
         screenfetch
         software-properties-common
+        terraform
         tree
+        vault
         unzip
         wget
         zip
         zsh
     )
 
-    sudo apt install "${apps[@]}" -y
-
-    # Ansible
-    sudo apt-add-repository --yes --update ppa:ansible/ansible
-    sudo apt install ansible
-
+    sudo apt-get update && sudo apt-get install "${apps[@]}" -yi
+    sudo apt-get upgrade && sudo apt-get autoremove 
+    
     # Azure cli
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
     az extension add --name azure-devops
@@ -77,16 +79,10 @@ elif is_linux; then
     unzip -o awscliv2.zip
     sudo ./aws/install --update
 
+    popd
+
     # AWS Global Tool for dotnet
     dotnet tool update -g Amazon.Lambda.Tools
-
-    # Terraform
-    TERR_VER=`curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d: -f2 | tr -d \"\,\v | awk '{$1=$1};1'`
-    wget https://releases.hashicorp.com/terraform/${TERR_VER}/terraform_${TERR_VER}_linux_amd64.zip
-    unzip terraform_${TERR_VER}_linux_amd64.zip
-    sudo mv terraform /usr/local/bin
-    
-    popd
 
 fi
 
