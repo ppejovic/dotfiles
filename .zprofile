@@ -19,8 +19,8 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='vim'
+export VISUAL="${EDITOR}"
 export PAGER='less'
 
 #
@@ -48,6 +48,7 @@ path=(
   /usr/local/{bin,sbin}
   $path
   $HOME/.dotnet/tools
+  $HOME/.local/bin
 )
 
 #
