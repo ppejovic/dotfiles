@@ -51,6 +51,7 @@ elif is_linux; then
     # apt packages
     apps=(
         ansible
+        amazon-ecr-credential-helper
         jq
         pass
         python3-pip
@@ -58,8 +59,8 @@ elif is_linux; then
         software-properties-common
         terraform
         tree
-        vault
         unzip
+        vault
         wget
         zip
         zsh
