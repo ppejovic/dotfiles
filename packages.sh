@@ -27,10 +27,14 @@ if is_osx; then
                  jq   \
                  tmux \
                  nmap \
-                 telnet
-
+                 telnet \
+                 azure-cli
+    
     # Homebrew formulae
     brew cask install aws-vault
+
+    # Azure cli
+    az extension add --name azure-devops
 
     pushd /tmp
 
