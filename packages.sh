@@ -32,6 +32,7 @@ if is_osx; then
     
     # Homebrew formulae
     brew cask install aws-vault
+    brew cast install Zettlr
 
     # Azure cli
     az extension add --name azure-devops
