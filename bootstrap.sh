@@ -6,7 +6,8 @@ git pull origin master --recurse-submodule --no-rebase
 
 function do_it() {
 
-    rsync --exclude ".git/" \
+    rsync --exclude "wsl.conf" \
+        --exclude ".git/" \
         --exclude ".DS_Store" \
         --exclude ".osx" \
         --exclude ".gitignore" \
@@ -21,6 +22,8 @@ function do_it() {
         git config --global credential.helper osxkeychain
     elif [[ -n "${WSL_DISTRO_NAME}" ]]; then
         git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe"
+
+        sudo rsync -avh --no-perms wsl.conf /etc/wsl.conf
     fi
 }
 
