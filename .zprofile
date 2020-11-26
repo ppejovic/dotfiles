@@ -51,6 +51,11 @@ path=(
   $HOME/.local/bin
 )
 
+
+if [[ -n "${WSL_DISTRO_NAME}" ]]; then
+  path+=(/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/)
+fi
+
 #
 # Less
 #
