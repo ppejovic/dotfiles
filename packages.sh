@@ -28,11 +28,14 @@ if is_osx; then
                  tmux \
                  nmap \
                  telnet \
-                 azure-cli
+                 azure-cli \
+                 pandoc \
+                 pandoc-citeproc
     
     # Homebrew formulae
-    brew cask install aws-vault
-    brew cast install Zettlr
+    brew cask install aws-vault \
+                      zettlr \
+                      basictex
 
     # Azure cli
     az extension add --name azure-devops
