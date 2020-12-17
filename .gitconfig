@@ -3,3 +3,5 @@
 [user]
   name = Pero P.
   email = ppejovic@users.noreply.github.com
+[pull]
+  ff = only
