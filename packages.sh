@@ -47,9 +47,10 @@ if is_osx; then
     sudo installer -pkg ./AWSCLIV2.pkg -target /
 
     # Dotnet
-    curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh && chmod 744 dotnet-install.sh
-    ./dotnet-install.sh --channel 5.0 
-    
+    curl https://download.visualstudio.microsoft.com/download/pr/0a7fa783-02e1-4785-b7b1-3c430f8825dc/764e53ff2f5722bc1b8bbc178fe25930/dotnet-sdk-5.0.101-osx-x64.pkg \
+        -o dotnet-sdk.pkg
+    sudo installer -pkg ./dotnet-sdk.pkg -target /
+
     popd
 
 elif is_linux; then
