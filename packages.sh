@@ -33,9 +33,9 @@ if is_osx; then
                  pandoc-citeproc
     
     # Homebrew formulae
-    brew cask install aws-vault \
-                      zettlr \
-                      basictex
+    brew install --cask aws-vault \
+                        zettlr \
+                        basictex
 
     # Azure cli
     az extension add --name azure-devops
@@ -43,9 +43,13 @@ if is_osx; then
     pushd /tmp
 
     # AWS cli
-    curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+    curl https://awscli.amazonaws.com/AWSCLIV2.pkg -o AWSCLIV2.pkg
     sudo installer -pkg ./AWSCLIV2.pkg -target /
 
+    # Dotnet
+    curl -L https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh && chmod 744 dotnet-install.sh
+    ./dotnet-install.sh --channel 5.0 
+    
     popd
 
 elif is_linux; then
@@ -84,7 +88,7 @@ elif is_linux; then
     pushd /tmp/
 
     # AWS cli
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip
     unzip -o awscliv2.zip
     sudo ./aws/install --update
 
