@@ -23,14 +23,18 @@ if is_osx; then
     # Upgrade any already-installed formulae
     brew upgrade
 
-    brew install tree \
+    brew install hashicorp/tap/terraform
+
+    brew install azure-cli \
                  jq   \
-                 tmux \
                  nmap \
-                 telnet \
-                 azure-cli \
                  pandoc \
-                 pandoc-citeproc
+                 pandoc-citeproc \
+                 telnet \
+                 hashicorp/tap/terraform \
+                 tmux \
+                 tree 
+
     
     # Homebrew formulae
     brew install --cask aws-vault \
