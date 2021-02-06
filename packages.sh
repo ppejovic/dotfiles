@@ -104,6 +104,11 @@ elif is_linux; then
 
 fi
 
+mkdir -p ~/.zsh/completion
+
+# Docker completion
+curl -L https://raw.githubusercontent.com/docker/compose/1.28.2/contrib/completion/zsh/_docker-compose > ~/.zsh/completion/_docker-compose
+
 # zsh
 update_shell() {
     local shell_path

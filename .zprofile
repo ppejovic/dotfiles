@@ -56,6 +56,8 @@ if [[ -n "${WSL_DISTRO_NAME}" ]]; then
   path+=(/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/)
 fi
 
+fpath=(~/.zsh/completion $fpath)
+
 #
 # Less
 #
