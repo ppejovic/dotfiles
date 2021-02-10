@@ -23,7 +23,7 @@ fi
 source <(kubectl completion zsh)
 
 # terraform cli completions
-complete -o nospace -C /usr/local/bin/terraform terraform
+complete -o nospace -C /usr/bin/terraform terraform
 
 # let me use things like HEAD^ in git commands
 unsetopt nomatch
