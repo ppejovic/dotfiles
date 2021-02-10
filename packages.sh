@@ -60,15 +60,20 @@ if is_osx; then
 elif is_linux; then
 
     ## Repositories
-    sudo apt-add-repository --yes --update ppa:ansible/ansible
-
     curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
     sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-    
+
+    MS_DEB=packages-microsoft-prod.deb
+    curl https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -o $MS_DEB 
+    sudo dpkg -i $MS_DEB 
+    rm -f $MS_DEB
+
     # apt packages
     apps=(
+        apt-transport-https
         ansible
         amazon-ecr-credential-helper
+        dotnet-sdk-5.0
         jq
         pass
         python3-pip
@@ -83,7 +88,7 @@ elif is_linux; then
         zsh
     )
 
-    sudo apt-get update && sudo apt-get install "${apps[@]}" -yi
+    sudo apt-get update && sudo apt-get install "${apps[@]}" -y
     sudo apt-get upgrade && sudo apt-get autoremove 
     
     # Azure cli
