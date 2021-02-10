@@ -27,7 +27,3 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 
 # let me use things like HEAD^ in git commands
 unsetopt nomatch
-
-proxy="$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}')"
-export http_proxy="$proxy:8888"
-export https_proxy=$http_proxy
