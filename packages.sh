@@ -102,6 +102,13 @@ elif is_linux; then
     unzip -o awscliv2.zip
     sudo ./aws/install --update
 
+
+    # AWS SAM cli
+    curl -O -L https://github.com/aws/aws-sam-cli/releases/download/v1.18.1/aws-sam-cli-linux-x86_64.zip 
+    echo "742ea69de70100b132cd636612d5d256e628178f366284bf74defef656969968 aws-sam-cli-linux-x86_64.zip" | sha256sum -c
+    unzip -o aws-sam-cli-linux-x86_64.zip -d sam 
+    sudo ./sam/install --update
+
     popd
 
     # AWS Global Tool for dotnet
