@@ -54,6 +54,7 @@ path=(
 
 if [[ -n "${WSL_DISTRO_NAME}" ]]; then
   path+=(/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin/)
+  path+=(/mnt/c/Program Files/Docker/Docker/resources/bin)
 fi
 
 fpath=(~/.zsh/completion $fpath)
