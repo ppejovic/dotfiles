@@ -21,7 +21,7 @@ function do_it() {
     if [[ $OSTYPE =~ ^darwin ]]; then
         git config --global credential.helper osxkeychain
     elif [[ -n "${WSL_DISTRO_NAME}" ]]; then
-        git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager.exe"
+        git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
 
         sudo rsync -avh --no-perms wsl.conf /etc/wsl.conf
     fi
