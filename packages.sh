@@ -113,7 +113,7 @@ elif is_linux; then
 
     # AWS Global Tool for dotnet
     dotnet tool update -g Amazon.Lambda.Tools
-
+    dotnet new -i Amazon.Lambda.Templates
 fi
 
 mkdir -p ~/.zsh/completion
