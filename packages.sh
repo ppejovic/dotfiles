@@ -114,6 +114,9 @@ elif is_linux; then
     # AWS Global Tool for dotnet
     dotnet tool update -g Amazon.Lambda.Tools
     dotnet new -i Amazon.Lambda.Templates
+
+    # PowerShell as dotnet global tool
+    dotnet tool update -g PowerShell
 fi
 
 mkdir -p ~/.zsh/completion
