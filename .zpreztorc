@@ -39,10 +39,10 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'git' \
-  'az' \
   'prompt' \
-  'tmux'
-
+  'tmux' \
+  'az' \
+  'tf'
 #
 # Autosuggestions
 #
