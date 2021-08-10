@@ -26,12 +26,15 @@ if is_osx; then
     brew install hashicorp/tap/terraform
 
     brew install azure-cli \
+                 hashicorp/tap/terraform \
+                 helm \
                  jq   \
+                 kubernetes-cli \
+                 minikube \
                  nmap \
                  pandoc \
                  pandoc-citeproc \
                  telnet \
-                 hashicorp/tap/terraform \
                  tmux \
                  tree 
 
