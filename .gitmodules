@@ -7,3 +7,6 @@
 [submodule ".zprezto-contrib/tf"]
 	path = .zprezto-contrib/tf
 	url = https://github.com/prezto-contributions/prezto-terraform.git
+[submodule ".zprezto-contrib/git-extras"]
+	path = .zprezto-contrib/git-extras
+	url = https://github.com/ppejovic/git-extras-prezto.git
