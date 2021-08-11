@@ -112,6 +112,10 @@ elif is_linux; then
     unzip -o aws-sam-cli-linux-x86_64.zip -d sam 
     sudo ./sam/install --update
 
+    # AWS SSM plugin 
+    curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
+    sudo dpkg -i session-manager-plugin.deb
+
     popd
 
     # AWS Global Tool for dotnet
