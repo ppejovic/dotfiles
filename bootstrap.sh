@@ -12,6 +12,7 @@ function do_it() {
         --exclude ".osx" \
         --exclude ".gitignore" \
         --exclude ".gitmodules" \
+        --exclude "aws-cli-public-key" \
         --exclude "bootstrap.sh" \
         --exclude "packages.sh" \
         --exclude "README.md" \
