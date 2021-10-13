@@ -5,5 +5,5 @@
   email = ppejovic@users.noreply.github.com
 [pull]
   ff = only
-[includeIf "gitdir:~/repos/work"]
+[includeIf "gitdir:~/repos/work/"]
   path = ~/.gitconfig.work
