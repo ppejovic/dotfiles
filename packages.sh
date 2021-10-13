@@ -74,18 +74,15 @@ elif is_linux; then
     # apt packages
     apps=(
         apt-transport-https
-        ansible
-        amazon-ecr-credential-helper
         dotnet-sdk-5.0
+	    git
         jq
         pass
         python3-pip
-        screenfetch
         software-properties-common
         terraform
         tree
         unzip
-        vault
         wget
         zip
         zsh
@@ -94,33 +91,21 @@ elif is_linux; then
     sudo apt-get update && sudo apt-get install "${apps[@]}" -y
     sudo apt-get upgrade && sudo apt-get autoremove 
     
-    # Azure cli
-    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-    az extension add --name azure-devops
+    # Import AWS cli public key
+    gpg --import aws-cli-public-key
 
     pushd /tmp/
 
     # AWS cli
+    curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig -o awscliv2.sig 
     curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip
+
+    gpg --verify awscliv2.sig awscliv2.zip
+
     unzip -o awscliv2.zip
     sudo ./aws/install --update
 
-
-    # AWS SAM cli
-    curl -O -L https://github.com/aws/aws-sam-cli/releases/download/v1.18.1/aws-sam-cli-linux-x86_64.zip 
-    echo "742ea69de70100b132cd636612d5d256e628178f366284bf74defef656969968 aws-sam-cli-linux-x86_64.zip" | sha256sum -c
-    unzip -o aws-sam-cli-linux-x86_64.zip -d sam 
-    sudo ./sam/install --update
-
-    # AWS SSM plugin 
-    curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
-    sudo dpkg -i session-manager-plugin.deb
-
     popd
-
-    # AWS Global Tool for dotnet
-    dotnet tool update -g Amazon.Lambda.Tools
-    dotnet new -i Amazon.Lambda.Templates
 
     # PowerShell as dotnet global tool
     dotnet tool update -g PowerShell

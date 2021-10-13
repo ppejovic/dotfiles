@@ -20,7 +20,9 @@ if type aws_completer >/dev/null 2>&1; then
   complete -C "$(which aws_completer)" aws
 fi
 
-source <(kubectl completion zsh)
+if type kubectl >/dev/null 2>&1; then 
+  source <(kubectl completion zsh)
+fi 
 
 # terraform cli completions
 complete -o nospace -C /usr/bin/terraform terraform

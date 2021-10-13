@@ -41,7 +41,6 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'prompt' \
   'tmux' \
-  'az' \
   'tf' \
   'git-extras'
 #
