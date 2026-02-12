@@ -50,22 +50,48 @@ else
   error "Unsupported OS: $OS"
 fi
 
+# --- Back up conflicting files ---
+BACKUP_DIR="$HOME/.dotfiles_backup/$(date +%Y%m%d_%H%M%S)"
+STOW_PACKAGES=(zsh starship git)
+
+conflicts=()
+for pkg in "${STOW_PACKAGES[@]}"; do
+  while IFS= read -r file; do
+    target="$HOME/$file"
+    if [[ -e "$target" && ! -L "$target" ]]; then
+      conflicts+=("$target")
+    fi
+  done < <(cd "$DOTFILES_DIR/$pkg" && find . -type f | sed 's|^\./||')
+done
+
+if [[ ${#conflicts[@]} -gt 0 ]]; then
+  info "Backing up existing files to $BACKUP_DIR"
+  mkdir -p "$BACKUP_DIR"
+  for file in "${conflicts[@]}"; do
+    rel="${file#$HOME/}"
+    mkdir -p "$BACKUP_DIR/$(dirname "$rel")"
+    mv "$file" "$BACKUP_DIR/$rel"
+    info "  backed up $rel"
+  done
+fi
+
 # --- Stow packages ---
 info "Linking dotfiles with stow..."
 cd "$DOTFILES_DIR"
-stow -v --target="$HOME" zsh starship git
+stow -v --target="$HOME" "${STOW_PACKAGES[@]}"
 
 # --- Install zimfw ---
 ZIM_HOME="$HOME/.zim"
-if [[ ! -d "$ZIM_HOME" ]]; then
+if [[ ! -f "$ZIM_HOME/zimfw.zsh" ]]; then
   info "Installing zimfw..."
-  curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.sh | zsh
+  mkdir -p "$ZIM_HOME"
+  curl -fsSL -o "$ZIM_HOME/zimfw.zsh" https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
 else
   info "zimfw already installed"
 fi
 
 # Install/update zimfw modules
 info "Installing zimfw modules..."
-zsh -ilc 'zimfw install'
+zsh -lc 'ZIM_HOME=~/.zim source ~/.zim/zimfw.zsh install'
 
 info "Done! Open a new terminal to see your new shell."
