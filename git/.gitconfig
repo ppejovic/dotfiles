@@ -1,0 +1,19 @@
+[user]
+	name = Pero
+	email = ppejovic@users.noreply.github.com
+
+[init]
+	defaultBranch = main
+
+[core]
+	excludesFile = ~/.gitignore_global
+
+[pull]
+	rebase = true
+
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	lg = log --oneline --graph --decorate

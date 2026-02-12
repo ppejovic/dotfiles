@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editors
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Environment / secrets
+.env
+.env.local
+.direnv/

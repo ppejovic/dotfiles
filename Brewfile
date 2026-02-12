@@ -1,0 +1,5 @@
+brew "stow"
+brew "starship"
+brew "zsh"
+brew "direnv"
+brew "git"
