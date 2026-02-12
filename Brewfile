@@ -5,5 +5,6 @@ brew "direnv"
 brew "git"
 brew "gh"
 
+cask "codex"
 cask "ghostty"
 cask "visual-studio-code"
