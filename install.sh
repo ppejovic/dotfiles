@@ -4,6 +4,7 @@ set -euo pipefail
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 info() { printf '\033[34m[info]\033[0m %s\n' "$1"; }
+warn() { printf '\033[33m[warn]\033[0m %s\n' "$1"; }
 error() { printf '\033[31m[error]\033[0m %s\n' "$1" >&2; exit 1; }
 
 # --- Detect environment ---
@@ -100,6 +101,11 @@ if ! command -v claude &>/dev/null; then
   curl -fsSL https://claude.ai/install.sh | bash
 else
   info "Claude Code already installed"
+fi
+
+# --- GitHub CLI auth ---
+if command -v gh &>/dev/null && ! gh auth status &>/dev/null; then
+  warn "GitHub CLI installed but not authenticated. Run: gh auth login"
 fi
 
 info "Done! Open a new terminal to see your new shell."
