@@ -94,4 +94,12 @@ fi
 info "Installing zimfw modules..."
 zsh -lc 'ZIM_HOME=~/.zim source ~/.zim/zimfw.zsh install'
 
+# --- Install Claude Code ---
+if ! command -v claude &>/dev/null; then
+  info "Installing Claude Code..."
+  curl -fsSL https://claude.ai/install.sh | bash
+else
+  info "Claude Code already installed"
+fi
+
 info "Done! Open a new terminal to see your new shell."
