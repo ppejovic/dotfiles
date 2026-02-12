@@ -8,12 +8,8 @@
 [core]
 	excludesFile = ~/.gitignore_global
 
+[credential]
+	helper = osxkeychain
+
 [pull]
 	rebase = true
-
-[alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	lg = log --oneline --graph --decorate
