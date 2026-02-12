@@ -1,6 +1,6 @@
 # Dotfiles
 
-macOS/Linux dotfiles managed with GNU Stow.
+macOS and devcontainer dotfiles managed with GNU Stow.
 
 ## Structure
 
