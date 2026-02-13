@@ -3,6 +3,7 @@ brew "starship"
 brew "zsh"
 brew "direnv"
 brew "git"
+brew "node"
 brew "gh"
 
 cask "1password"
