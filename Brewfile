@@ -4,6 +4,7 @@ brew "zsh"
 brew "direnv"
 brew "git"
 brew "node"
+brew "uv"
 brew "gh"
 
 cask "1password"
