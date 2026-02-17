@@ -53,7 +53,7 @@ fi
 
 # --- Back up conflicting files ---
 BACKUP_DIR="$HOME/.dotfiles_backup/$(date +%Y%m%d_%H%M%S)"
-STOW_PACKAGES=(zsh starship git)
+STOW_PACKAGES=(zsh starship git gh)
 
 conflicts=()
 for pkg in "${STOW_PACKAGES[@]}"; do
