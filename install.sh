@@ -79,7 +79,7 @@ fi
 # --- Stow packages ---
 info "Linking dotfiles with stow..."
 cd "$DOTFILES_DIR"
-stow -v --target="$HOME" "${STOW_PACKAGES[@]}"
+stow -v --no-folding --target="$HOME" "${STOW_PACKAGES[@]}"
 
 # --- Install zimfw ---
 ZIM_HOME="$HOME/.zim"
