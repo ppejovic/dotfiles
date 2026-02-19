@@ -6,6 +6,7 @@ brew "git"
 brew "node"
 brew "uv"
 brew "gh"
+brew "xcodegen"
 
 cask "1password"
 cask "bruno"
