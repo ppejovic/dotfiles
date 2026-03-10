@@ -9,6 +9,7 @@ brew "gh"
 brew "xcodegen"
 brew "pandoc"
 
+cask "basictex"
 cask "1password"
 cask "bruno"
 cask "codex"
