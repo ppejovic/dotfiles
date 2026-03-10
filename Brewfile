@@ -7,6 +7,7 @@ brew "node"
 brew "uv"
 brew "gh"
 brew "xcodegen"
+brew "pandoc"
 
 cask "1password"
 cask "bruno"
