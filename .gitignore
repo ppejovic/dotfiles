@@ -2,7 +2,7 @@
 .DS_Store
 
 # Claude Code
-.claude/
+/.claude/
 
 # Editor
 *.swp
