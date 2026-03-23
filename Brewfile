@@ -8,6 +8,7 @@ brew "uv"
 brew "gh"
 brew "xcodegen"
 brew "pandoc"
+brew "poppler"
 brew "tree"
 brew "mise"
 
