@@ -39,6 +39,18 @@ elif [[ "$OS" == "Linux" ]]; then
     curl -sS https://starship.rs/install.sh | sh -s -- -y
   fi
 
+  # Install tree
+  if ! command -v tree &>/dev/null; then
+    info "Installing tree..."
+    sudo apt-get install -y tree
+  fi
+
+  # Install mise
+  if ! command -v mise &>/dev/null; then
+    info "Installing mise..."
+    curl https://mise.run | sh
+  fi
+
   # Install direnv
   if ! command -v direnv &>/dev/null; then
     info "Installing direnv..."

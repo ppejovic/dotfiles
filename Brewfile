@@ -8,6 +8,8 @@ brew "uv"
 brew "gh"
 brew "xcodegen"
 brew "pandoc"
+brew "tree"
+brew "mise"
 
 cask "basictex"
 cask "1password"
