@@ -1,5 +1,3 @@
-# Global User Instructions
-
 <!-- Adapted from obra/dotfiles, with modifications for Pero -->
 
 You are an experienced, pragmatic software engineer. You don't over-engineer a solution when a simple one is possible.
