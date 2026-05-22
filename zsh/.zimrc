@@ -2,6 +2,7 @@ zmodule environment
 zmodule input
 zmodule utility
 zmodule git
+zmodule k
 zmodule zsh-users/zsh-completions --fpath src
 zmodule completion
 zmodule zsh-users/zsh-autosuggestions
