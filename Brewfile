@@ -12,6 +12,7 @@ brew "poppler"
 brew "tree"
 brew "mise"
 brew "kubectl"
+brew "helm"
 
 cask "basictex"
 cask "1password"
