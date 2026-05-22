@@ -7,70 +7,20 @@ info() { printf '\033[34m[info]\033[0m %s\n' "$1"; }
 warn() { printf '\033[33m[warn]\033[0m %s\n' "$1"; }
 error() { printf '\033[31m[error]\033[0m %s\n' "$1" >&2; exit 1; }
 
-# --- Detect environment ---
-OS="$(uname -s)"
-
 # --- Install packages ---
-if [[ "$OS" == "Darwin" ]]; then
-  info "macOS detected"
-
-  # Install Homebrew if missing
-  if ! command -v brew &>/dev/null; then
-    info "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv)"
-  fi
-
-  info "Running brew bundle..."
-  brew bundle --file="$DOTFILES_DIR/Brewfile"
-
-elif [[ "$OS" == "Linux" ]]; then
-  info "Linux detected"
-
-  # Install stow
-  if ! command -v stow &>/dev/null; then
-    info "Installing stow..."
-    sudo apt-get update && sudo apt-get install -y stow
-  fi
-
-  # Install starship
-  if ! command -v starship &>/dev/null; then
-    info "Installing starship..."
-    curl -sS https://starship.rs/install.sh | sh -s -- -y
-  fi
-
-  # Install tree
-  if ! command -v tree &>/dev/null; then
-    info "Installing tree..."
-    sudo apt-get install -y tree
-  fi
-
-  # Install mise
-  if ! command -v mise &>/dev/null; then
-    info "Installing mise..."
-    curl https://mise.run | sh
-  fi
-
-  # Install direnv
-  if ! command -v direnv &>/dev/null; then
-    info "Installing direnv..."
-    sudo apt-get install -y direnv 2>/dev/null || {
-      curl -sfL https://direnv.net/install.sh | bash
-    }
-  fi
-
-  # Install kubectl
-  if ! command -v kubectl &>/dev/null; then
-    info "Installing kubectl..."
-    KUBECTL_VERSION="$(curl -fsSL https://dl.k8s.io/release/stable.txt)"
-    curl -fsSLo /tmp/kubectl "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/$(dpkg --print-architecture)/kubectl"
-    sudo install -o root -g root -m 0755 /tmp/kubectl /usr/local/bin/kubectl
-    rm /tmp/kubectl
-  fi
-
-else
-  error "Unsupported OS: $OS"
+if [[ "$(uname -s)" != "Darwin" ]]; then
+  error "This dotfiles repo only supports macOS"
 fi
+
+# Install Homebrew if missing
+if ! command -v brew &>/dev/null; then
+  info "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv)"
+fi
+
+info "Running brew bundle..."
+brew bundle --file="$DOTFILES_DIR/Brewfile"
 
 # --- Back up conflicting files ---
 BACKUP_DIR="$HOME/.dotfiles_backup/$(date +%Y%m%d_%H%M%S)"

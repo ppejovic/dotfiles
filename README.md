@@ -1,6 +1,6 @@
 # Dotfiles
 
-Personal dotfiles for **macOS** and **devcontainers**, managed with [GNU Stow](https://www.gnu.org/software/stow/).
+Personal dotfiles for **macOS**, managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
 ## What's included
 
@@ -20,9 +20,7 @@ cd ~/dotfiles
 ./install.sh
 ```
 
-The install script is idempotent and safe to rerun.
-
-**On macOS** it will:
+The install script is idempotent and safe to rerun. It will:
 
 1. Install Homebrew (if missing)
 2. Install packages from the Brewfile (stow, starship, direnv, gh, etc.)
@@ -30,16 +28,6 @@ The install script is idempotent and safe to rerun.
 4. Symlink dotfiles into `$HOME` via Stow
 5. Install zimfw and its modules
 6. Install Claude Code
-
-**In devcontainers** (Linux) it will:
-
-1. Install stow, starship, and direnv via apt/curl
-2. Back up any conflicting files to `~/.dotfiles_backup/`
-3. Symlink dotfiles into `$HOME` via Stow
-4. Install zimfw and its modules
-5. Install Claude Code
-
-Devcontainers pick up this repo automatically via the VS Code `dotfiles.repository` setting.
 
 ## Managing packages
 
