@@ -59,6 +59,15 @@ elif [[ "$OS" == "Linux" ]]; then
     }
   fi
 
+  # Install kubectl
+  if ! command -v kubectl &>/dev/null; then
+    info "Installing kubectl..."
+    KUBECTL_VERSION="$(curl -fsSL https://dl.k8s.io/release/stable.txt)"
+    curl -fsSLo /tmp/kubectl "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/$(dpkg --print-architecture)/kubectl"
+    sudo install -o root -g root -m 0755 /tmp/kubectl /usr/local/bin/kubectl
+    rm /tmp/kubectl
+  fi
+
 else
   error "Unsupported OS: $OS"
 fi

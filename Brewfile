@@ -11,6 +11,7 @@ brew "pandoc"
 brew "poppler"
 brew "tree"
 brew "mise"
+brew "kubectl"
 
 cask "basictex"
 cask "1password"
