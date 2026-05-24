@@ -2,7 +2,7 @@ zmodule environment
 zmodule input
 zmodule utility
 zmodule git
-zmodule k
+zmodule joke/zim-kubectl --tag v1.2.1
 zmodule zsh-users/zsh-completions --fpath src
 zmodule completion
 zmodule zsh-users/zsh-autosuggestions
